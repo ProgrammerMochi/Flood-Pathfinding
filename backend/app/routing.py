@@ -141,7 +141,10 @@ def shortest_safe_route(
         return RouteResult(fallback.path, fallback.duration_s, "NO_SAFE_ROUTE", warnings)
 
 
-def _normal_route(graph: nx.Graph, origin: Hashable, destination: Hashable) -> RouteResult:
+def shortest_normal_route(
+    graph: nx.Graph, origin: Hashable, destination: Hashable
+) -> RouteResult:
+    """Find the fastest route while deliberately ignoring flood depth."""
     def weight(_: Hashable, __: Hashable, data: Mapping[str, Any]) -> float:
         if graph.is_multigraph():
             return min(base_time_seconds(edge) for edge in data.values())

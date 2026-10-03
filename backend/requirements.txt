@@ -7,3 +7,7 @@ shapely==2.1.2
 pyproj==3.8.0
 scikit-learn>=1.6
 pytest>=8.0
+fastapi>=0.115
+uvicorn[standard]>=0.30
+httpx2
+psycopg2-binary>=2.9
